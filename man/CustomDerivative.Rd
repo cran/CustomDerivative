@@ -3,6 +3,9 @@
 \name{CustomDerivative}
 \alias{CustomDerivative}
 \title{Custom Derivative R6 Class}
+\value{
+For \code{price}, \code{delta}, \code{gamma}, \code{theta}, \code{vega}, and \code{rho}: a numeric value.
+}
 \description{
 This class provides methods to create and price custom derivatives.
 }
@@ -14,13 +17,49 @@ The class uses the Monte Carlo method for pricing. The price method simulates
 the underlying asset price paths and applies the payoff function to determine
 the option price.
 }
+\section{Methods}{
+
+\describe{
+  \item{initialize(underlying_price, strike_price, time_to_maturity, volatility, risk_free_rate, payoff_function):}{
+    Constructor method. Initializes the parameters for the custom derivative.
+  }
+  \item{price():}{
+    Calculate the option price using the Monte Carlo method.
+  }
+  \item{delta():}{
+    Calculate the Delta of the option.
+  }
+  \item{gamma():}{
+    Calculate the Gamma of the option.
+  }
+  \item{theta():}{
+    Calculate the Theta of the option.
+  }
+  \item{vega():}{
+    Calculate the Vega of the option.
+  }
+  \item{rho():}{
+    Calculate the Rho of the option.
+  }
+}
+}
+
 \examples{
-# Create a custom European call option
+# Define the payoff function for a European call option
 call_payoff <- function(price) {
   return(max(price - 100, 0))
 }
+
+# Create an instance of the CustomDerivative class
 option <- CustomDerivative$new(100, 100, 1, 0.2, 0.05, call_payoff)
-print(option$price())
+
+# Print Option Price and Greeks
+cat("Option Price:", option$price(), "\n")
+cat("Delta:", option$delta(), "\n")
+cat("Gamma:", option$gamma(), "\n")
+cat("Theta:", option$theta(), "\n")
+cat("Vega:", option$vega(), "\n")
+cat("Rho:", option$rho(), "\n")
 }
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
@@ -44,6 +83,11 @@ print(option$price())
 \itemize{
 \item \href{#method-CustomDerivative-new}{\code{CustomDerivative$new()}}
 \item \href{#method-CustomDerivative-price}{\code{CustomDerivative$price()}}
+\item \href{#method-CustomDerivative-delta}{\code{CustomDerivative$delta()}}
+\item \href{#method-CustomDerivative-gamma}{\code{CustomDerivative$gamma()}}
+\item \href{#method-CustomDerivative-theta}{\code{CustomDerivative$theta()}}
+\item \href{#method-CustomDerivative-vega}{\code{CustomDerivative$vega()}}
+\item \href{#method-CustomDerivative-rho}{\code{CustomDerivative$rho()}}
 \item \href{#method-CustomDerivative-clone}{\code{CustomDerivative$clone()}}
 }
 }
@@ -75,7 +119,8 @@ print(option$price())
 
 \item{\code{risk_free_rate}}{Risk-free rate (annual).}
 
-\item{\code{payoff_function}}{A function that calculates the option payoff.}
+\item{\code{payoff_function}}{A function that calculates the option payoff.
+Calculate the option price using the Monte Carlo method.}
 }
 \if{html}{\out{</div>}}
 }
@@ -90,6 +135,71 @@ print(option$price())
 
 \subsection{Returns}{
 Numeric value representing the option price.
+Calculate the Delta of the option.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CustomDerivative-delta"></a>}}
+\if{latex}{\out{\hypertarget{method-CustomDerivative-delta}{}}}
+\subsection{Method \code{delta()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CustomDerivative$delta()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+Numeric value representing the Delta.
+Calculate the gamma of the option.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CustomDerivative-gamma"></a>}}
+\if{latex}{\out{\hypertarget{method-CustomDerivative-gamma}{}}}
+\subsection{Method \code{gamma()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CustomDerivative$gamma()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+Numeric value representing the gamma
+Calculate the theta of the option.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CustomDerivative-theta"></a>}}
+\if{latex}{\out{\hypertarget{method-CustomDerivative-theta}{}}}
+\subsection{Method \code{theta()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CustomDerivative$theta()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+Numeric value representing the theta
+Calculate the vega of the option.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CustomDerivative-vega"></a>}}
+\if{latex}{\out{\hypertarget{method-CustomDerivative-vega}{}}}
+\subsection{Method \code{vega()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CustomDerivative$vega()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+Numeric value representing the vega
+Calculate the rho of the option.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CustomDerivative-rho"></a>}}
+\if{latex}{\out{\hypertarget{method-CustomDerivative-rho}{}}}
+\subsection{Method \code{rho()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CustomDerivative$rho()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+Numeric value representing the rho
 }
 }
 \if{html}{\out{<hr>}}
